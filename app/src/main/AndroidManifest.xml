@@ -9,18 +9,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".Activities.MainActivity"></activity>
+
         <activity android:name=".Activities.SurveyActivity" />
+
         <activity android:name=".DisclaimerPopUp" />
+
         <activity android:name=".Activities.ResultsActivity" />
+
         <activity android:name=".Activities.TutorialActivity" />
+
         <activity android:name=".Activities.SplashActivity">
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".Activities.DescriptionsActivity"></activity>
 
         <meta-data
