@@ -7,6 +7,13 @@
     <dimen name="image_dimensions">140dp</dimen>
 
     survey page
+    <dimen name="survey_icon_size">40dp</dimen>
+    <dimen name="survey_icon_marginStart">20dp</dimen>
+    <dimen name="survey_icon_marginLeft">20dp</dimen>
+    <dimen name="survey_question_marginLeft">75dp</dimen>
+    <dimen name="survey_question_marginRight">16dp</dimen>
+    <dimen name="imageview_arrow_marginRight">16dp</dimen>
+
     <dimen name="survey_statement_top_margin">18dp</dimen>
     <dimen name="survey_statement_horizontal_margin">10dp</dimen>
     <dimen name="survey_statement_bottom_margin">12dp</dimen>
@@ -49,5 +56,39 @@
     <dimen name="exit_button_bottom_margin">50dp</dimen>
     <dimen name="swipe_text_margin">20dp</dimen>
     <dimen name="swipe_text_size">16sp</dimen>
+
+    Global
+    <dimen name="fontsize_18sp">18sp</dimen>
+    <dimen name="fontsize_16sp">16sp</dimen>
+    <dimen name="linespacing_44">1.44</dimen>
+    <dimen name="margin_16sp">16sp</dimen>
+    <dimen name="margin_20sp">20sp</dimen>
+    <dimen name="margin_30sp">30sp</dimen>
+
+
+    PartTwoPrepFragment
+    <dimen name="partTwo_instruction_marginTop">60sp</dimen>
+    <dimen name="partTwo_instruction_marginBottom">22sp</dimen>
+    <dimen name="partTwo_instruction_marginLeft">30sp</dimen>
+    <dimen name="partTwo_instruction_marginRight">22sp</dimen>
+
+    <dimen name="partTwo_item_marginTop">16sp</dimen>
+    <dimen name="partTwo_item_marginBottom">16sp</dimen>
+    <dimen name="partTwo_item_marginLeft">32sp</dimen>
+    <dimen name="partTwo_item_marginRight">29sp</dimen>
+
+    <dimen name="partTwo_plus_size">16sp</dimen>
+    <dimen name="partTwo_plus_marginTop">16sp</dimen>
+    <dimen name="partTwo_plus_marginBottom">16sp</dimen>
+    <dimen name="partTwo_plus_marginLeft">30sp</dimen>
+    <dimen name="partTwo_plus_marginRight">16sp</dimen>
+
+
+    <dimen name="partTwo_button_width">156sp</dimen>
+    <dimen name="partTwo_button_height">44sp</dimen>
+    <dimen name="partTwo_button_marginTop">32sp</dimen>
+    <dimen name="partTwo_button_marginBottom">16sp</dimen>
+    <dimen name="partTwo_button_marginLeft">30sp</dimen>
+    <dimen name="partTwo_button_marginRight">16sp</dimen>
 
 </resources>

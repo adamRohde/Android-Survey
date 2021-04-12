@@ -15,7 +15,7 @@
         android:textStyle="bold"
         android:textAllCaps="true"
         android:textSize="@dimen/intro_text_size"
-        android:textColor="@color/darkTurquoise" />
+        android:textColor="@color/appbar_color" />
 
     <TextView
         android:id="@+id/disclaimerTxtTextView"
@@ -27,7 +27,7 @@
         android:layout_marginRight="@dimen/disclaimer_text_horizontal_margin"
         android:text="@string/disclaimer_text"
         android:textSize="@dimen/disclaimer_text_size"
-        android:textColor="@color/navy" />
+        android:textColor="@color/appbar_color" />
 
     <Button
         android:id="@+id/acceptButton"
@@ -46,6 +46,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/check_box_bottom_margin"
         android:text="@string/disclaimer_check_box"
-        android:textColor="@color/darkgray"/>
+        android:textColor="@color/dark_gray"/>
 
 </RelativeLayout>

@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 
+import careerchangeover.com.valuesvisualizer.Activities.MainActivity;
+
 public class DisclaimerPopUp extends AppCompatActivity {
 
     private CheckBox checkBox;
@@ -30,7 +32,7 @@ public class DisclaimerPopUp extends AppCompatActivity {
                     editor.putBoolean(disclaimerAcceptedPref, true);
                     editor.apply();
                 }
-                Intent accept = new Intent(DisclaimerPopUp.this,MainActivity.class);
+                Intent accept = new Intent(DisclaimerPopUp.this, MainActivity.class);
                 startActivity(accept);
             }
         });

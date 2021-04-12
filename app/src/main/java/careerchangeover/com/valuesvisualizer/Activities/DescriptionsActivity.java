@@ -1,4 +1,4 @@
-package careerchangeover.com.valuesvisualizer;
+package careerchangeover.com.valuesvisualizer.Activities;
 
 import android.content.Context;
 
@@ -16,6 +16,8 @@ import android.widget.TextView;
 import java.util.HashMap;
 import java.util.Map;
 
+import careerchangeover.com.valuesvisualizer.R;
+
 public class DescriptionsActivity extends AppCompatActivity {
 
     @Override
@@ -31,14 +33,14 @@ public class DescriptionsActivity extends AppCompatActivity {
 
             TextView name = new TextView(this);
             name.setText(descriptions[i]);
-            name.setTextColor(getResources().getColor(R.color.navy));
+            name.setTextColor(getResources().getColor(R.color.appbar_color));
             name.setWidth(getScreenResolution(this).get("width")*3/10);
             name.setBackground(getResources().getDrawable(R.drawable.cell_border));
             horizontalRow.addView(name);
 
             TextView description = new TextView(this);
             description.setText(descriptions[i+1]);
-            description.setTextColor(getResources().getColor(R.color.navy));
+            description.setTextColor(getResources().getColor(R.color.appbar_color));
             description.setWidth(getScreenResolution(this).get("width")*13/20);
             description.setBackground(getResources().getDrawable(R.drawable.cell_border));
             horizontalRow.addView(description);

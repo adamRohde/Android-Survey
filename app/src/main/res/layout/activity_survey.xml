@@ -1,45 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/turquoise"
-    tools:context=".SurveyActivity">
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="fill_parent"
+    android:layout_width="fill_parent"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/surveyStatementTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/survey_statement_top_margin"
-        android:layout_marginLeft="@dimen/survey_statement_horizontal_margin"
-        android:layout_marginRight="@dimen/survey_statement_horizontal_margin"
-        android:layout_marginBottom="@dimen/survey_statement_bottom_margin"
-        android:text="survey statement"
-        android:textSize="@dimen/survey_statement_text_size"
-        android:textStyle="bold"
-        android:textAllCaps="true"
-        android:textColor="@color/navy"/>
-
-    <ListView
-        android:id="@+id/surveyListView"
+    <FrameLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:background="@color/background_color"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/surveyStatementTextView"
-        android:scrollbarStyle="outsideOverlay"
-        android:fadeScrollbars="false"
-        android:paddingBottom="60dp"
-        android:background="@color/white"
-        android:clipToPadding="false" />
+        android:id="@+id/fragment_container_survey"
+        tools:context=".Activities.SurveyActivity">
+    </FrameLayout>
 
-    <Button
-        android:id="@+id/saveButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="@dimen/save_button_bottom_margin"
-        android:text="@string/save" />
-
-</RelativeLayout>
+</LinearLayout>

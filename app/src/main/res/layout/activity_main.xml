@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundColor"
-    tools:context=".MainActivity">
+    android:background="@color/background_color"
+    tools:context=".Activities.MainActivity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -58,7 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:text="@string/logo"
-        android:textColor="@color/turquoise"
+        android:textColor="@color/appbar_color"
         android:textSize="@dimen/brought_to_you_by_text_size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

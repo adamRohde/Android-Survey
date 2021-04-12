@@ -1,4 +1,4 @@
-package careerchangeover.com.valuesvisualizer;
+package careerchangeover.com.valuesvisualizer.Activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,6 +9,9 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import android.os.Bundle;
 import android.view.View;
+
+import careerchangeover.com.valuesvisualizer.PagerAdapter;
+import careerchangeover.com.valuesvisualizer.R;
 
 public class TutorialActivity extends AppCompatActivity {
 
@@ -35,7 +38,7 @@ public class TutorialActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = mPref.edit();
                 editor.putBoolean(openTutorialPref, false);
                 editor.apply();
-                Intent exitToMain = new Intent(TutorialActivity.this,MainActivity.class);
+                Intent exitToMain = new Intent(TutorialActivity.this, MainActivity.class);
                 startActivity(exitToMain);
             }
         });

@@ -1,4 +1,4 @@
-package careerchangeover.com.valuesvisualizer;
+package careerchangeover.com.valuesvisualizer.Activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -34,6 +34,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import careerchangeover.com.valuesvisualizer.Activities.DescriptionsActivity;
+import careerchangeover.com.valuesvisualizer.MyDbHandler;
+import careerchangeover.com.valuesvisualizer.R;
+import careerchangeover.com.valuesvisualizer.Result;
 
 public class ResultsActivity extends AppCompatActivity {
 
@@ -79,7 +84,7 @@ public class ResultsActivity extends AppCompatActivity {
         descriptionsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent viewDescriptions = new Intent(ResultsActivity.this,DescriptionsActivity.class);
+                Intent viewDescriptions = new Intent(ResultsActivity.this, DescriptionsActivity.class);
                 startActivity(viewDescriptions);
             }
         });
@@ -227,7 +232,7 @@ public class ResultsActivity extends AppCompatActivity {
 
         // Fills personal data set with data and settings
         RadarDataSet dataSet1 = new RadarDataSet(personalEntryArrayList, personalScore);
-        int turquoise = ContextCompat.getColor(this,R.color.turquoise);
+        int turquoise = ContextCompat.getColor(this,R.color.appbar_color);
         dataSet1.setColor(turquoise);
         dataSet1.setLineWidth(2);
         dataSet1.setHighlightEnabled(false);
@@ -235,7 +240,7 @@ public class ResultsActivity extends AppCompatActivity {
 
         // Fills employer data set with data and settings
         RadarDataSet dataSet2 = new RadarDataSet(employerEntryArrayList, employerScore);
-        int navy = ContextCompat.getColor(this,R.color.navy);
+        int navy = ContextCompat.getColor(this,R.color.appbar_color);
         dataSet2.setColor(navy);
         dataSet2.setLineWidth(2);
         dataSet2.setHighlightEnabled(false);
@@ -278,7 +283,7 @@ public class ResultsActivity extends AppCompatActivity {
         if (checkResultsExist(personalScore)) {
             TextView personalScoreHeader = new TextView(this);
             personalScoreHeader.setText(personalScore);
-            personalScoreHeader.setTextColor(getResources().getColor(R.color.darkgray));
+            personalScoreHeader.setTextColor(getResources().getColor(R.color.dark_gray));
             personalScoreHeader.setLayoutParams(params);
             headerRow.addView(personalScoreHeader);
         }
@@ -286,7 +291,7 @@ public class ResultsActivity extends AppCompatActivity {
         if (checkResultsExist(employerScore)) {
             TextView employerScoreHeader = new TextView(this);
             employerScoreHeader.setText(employerScore);
-            employerScoreHeader.setTextColor(getResources().getColor(R.color.darkgray));
+            employerScoreHeader.setTextColor(getResources().getColor(R.color.dark_gray));
             employerScoreHeader.setLayoutParams(params);
             headerRow.addView(employerScoreHeader);
         }
@@ -299,7 +304,7 @@ public class ResultsActivity extends AppCompatActivity {
 
             TextView dimension = new TextView(this);
             dimension.setText(res.getValueDimension());
-            dimension.setTextColor(getResources().getColor(R.color.darkgray));
+            dimension.setTextColor(getResources().getColor(R.color.dark_gray));
             dimension.setPadding(10,0,0,0);
             tableRow.addView(dimension);
 
@@ -307,7 +312,7 @@ public class ResultsActivity extends AppCompatActivity {
                 TextView personalScore = new TextView(this);
                 score = decimalFormat.format(res.getPersonalScore());
                 personalScore.setText(score);
-                personalScore.setTextColor(getResources().getColor(R.color.darkgray));
+                personalScore.setTextColor(getResources().getColor(R.color.dark_gray));
                 personalScore.setGravity(Gravity.END);
                 personalScore.setPadding(0,0,20,0);
                 tableRow.addView(personalScore);
@@ -317,7 +322,7 @@ public class ResultsActivity extends AppCompatActivity {
                 TextView employerScore = new TextView(this);
                 score = decimalFormat.format(res.getEmployerScore());
                 employerScore.setText(score);
-                employerScore.setTextColor(getResources().getColor(R.color.darkgray));
+                employerScore.setTextColor(getResources().getColor(R.color.dark_gray));
                 employerScore.setGravity(Gravity.END);
                 employerScore.setPadding(0,0,20,0);
                 tableRow.addView(employerScore);
@@ -344,7 +349,7 @@ public class ResultsActivity extends AppCompatActivity {
         }
         warning.setText(getString(R.string.warning,blank));
         warning.setTextSize(getResources().getDimension(R.dimen.warning_text_size));
-        warning.setTextColor(getResources().getColor(R.color.navy));
+        warning.setTextColor(getResources().getColor(R.color.appbar_color));
         linearLayout.addView(warning);
 
     }

@@ -1,4 +1,4 @@
-package careerchangeover.com.valuesvisualizer;
+package careerchangeover.com.valuesvisualizer.Activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,6 +10,9 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
+
+import careerchangeover.com.valuesvisualizer.MyDbHandler;
+import careerchangeover.com.valuesvisualizer.R;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -31,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         // opens tutorial is flag is set to true
         if (goToTutorial) {
-            Intent openTutorial = new Intent(MainActivity.this,TutorialActivity.class);
+            Intent openTutorial = new Intent(MainActivity.this, TutorialActivity.class);
             startActivity(openTutorial);
         }
 
@@ -67,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (view.getId()) {
             case R.id.takeSelfSurveyButton:
                 // Switches to personal survey page with extra
-                Intent toSelfEval = new Intent(MainActivity.this,SurveyActivity.class);
+                Intent toSelfEval = new Intent(MainActivity.this, SurveyActivity.class);
                 toSelfEval.putExtra("column_name", dbHandler.COLUMN_SELF_EVAL);
                 startActivity(toSelfEval);
                 break;
@@ -79,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.viewResultsButton:
                 // Switches to results page
-                Intent toResults = new Intent(MainActivity.this,ResultsActivity.class);
+                Intent toResults = new Intent(MainActivity.this, ResultsActivity.class);
                 startActivity(toResults);
                 break;
             case R.id.crashButton:

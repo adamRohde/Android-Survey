@@ -9,19 +9,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"></activity>
-        <activity android:name=".SurveyActivity" />
+        <activity android:name=".Activities.MainActivity"></activity>
+        <activity android:name=".Activities.SurveyActivity" />
         <activity android:name=".DisclaimerPopUp" />
-        <activity android:name=".ResultsActivity" />
-        <activity android:name=".TutorialActivity" />
-        <activity android:name=".SplashActivity">
+        <activity android:name=".Activities.ResultsActivity" />
+        <activity android:name=".Activities.TutorialActivity" />
+        <activity android:name=".Activities.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DescriptionsActivity"></activity>
+        <activity android:name=".Activities.DescriptionsActivity"></activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

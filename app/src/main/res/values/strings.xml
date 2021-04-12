@@ -22,12 +22,16 @@
     <string name="logo">Brought to you by\nCareer Changeover</string>
 
     survey page
-    <string name="personal_survey_statement">As a guiding principle in my life, this value is... </string>
-    <string name="employer_survey_statement">As a business guiding principle for the company, this value is... </string>
+    <string name="personal_survey_statement">IN MY LIFE, IT IS IMPORTANT FOR ME TO:</string>
+    <string name="employer_survey_statement">TO MY BEST KNOWLEDGE, AT THIS COMPANY, I\'M EXPECTED TO:</string>
     <string name="not_important">Not\nImportant</string>
     <string name="important">Important</string>
     <string name="very_important">Very\nImportant</string>
     <string name="save">Save</string>
+
+    <string name="survey_part1_titles">Survey: My Values</string>
+    <string name="survey_part2_titles">Survey: My Values</string>
+
 
     disclaimer page
     <string name="disclaimer">Disclaimer:</string>
@@ -57,5 +61,49 @@
         <item>Power</item> <item>Social power, authority, wealth</item>
         <item>Security</item> <item>National security, family security, social order, cleanliness, reciprocation of favors</item>
     </string-array>
+
+    <string-array name="answers">
+        <item>Absolutely agree</item>
+        <item>Agree</item>
+        <item>Mostly agree</item>
+        <item>Somewhat agree</item>
+        <item>Mostly agree</item>
+        <item>Opposed to my principles</item>
+    </string-array>
+
+    <string-array name="questions">
+        <item>Utilize my knowledge, skills, and abilities to become a high performer</item>
+        <item>Demonstrate my leadership skills by guiding others in accomplishing company\'s goals</item>
+        <item>Be a team-player and support my co-workers when needed</item>
+        <item>Respect my colleagues and protect the workplace against discrimination</item>
+        <item>Take care of myself and avoid work-related health risks</item>
+        <item>Accept,  respect, and live by the organization\'s traditions and culture</item>
+        <item>Carry out my assigned roles, do no more no less but what my position requires</item>
+        <item>Make independent decisions, create and explore; choose the way of how to perform my work</item>
+        <item>Thrive in the unpredictable work environment full of challenges</item>
+        <item>Do what I enjoy and what reflects my personal interests</item>
+    </string-array>
+
+
+    <string-array name="dimensions">
+        <item>Universalism</item>
+        <item>Power</item>
+        <item>Hedonism</item>
+        <item>Self-Direction</item>
+        <item>Take care of myself and avoid work-related health risks</item>
+        <item>Security</item>
+        <item>Stimulation</item>
+        <item>Conformity</item>
+        <item>Power</item>
+        <item>Security</item>
+    </string-array>
+
+
+    <string name="tv_parttwo_instructions">To properly evaluate values of your prospective employer, when answering questions, recall:</string>
+    <string name="tv_parttwo_tip1">Gather information online</string>
+    <string name="tv_parttwo_tip2">Interactions with a recruiter</string>
+    <string name="tv_parttwo_tip3">Interview with a hiring manager/team</string>
+    <string name="tv_parttwo_tip4">Job requirements</string>
+
 
 </resources>

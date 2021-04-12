@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/background_color"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="25dp"
+    android:layout_marginBottom="25dp">
+
+    <ImageView
+        android:id="@+id/list_item_question_icon"
+        android:layout_width="@dimen/survey_icon_size"
+        android:layout_height="@dimen/survey_icon_size"
+        android:background="@drawable/ic_border_dark"
+        android:layout_marginLeft="@dimen/survey_icon_marginLeft"
+        android:layout_marginStart="@dimen/survey_icon_marginStart"
+        android:gravity="center_vertical"
+        tools:src="1"/>
+
+    <TextView
+        android:id="@+id/list_item_genre_name"
+        android:background="@color/background_color"
+        android:layout_width="wrap_content"
+        android:layout_height="42dp"
+        android:textSize="16sp"
+        android:fontFamily="@font/open_sans"
+        android:layout_marginLeft="@dimen/survey_question_marginLeft"
+        android:layout_marginStart="@dimen/survey_question_marginLeft"
+        android:layout_marginRight="@dimen/survey_question_marginRight"
+        android:layout_marginEnd="@dimen/survey_question_marginRight"
+        android:gravity="center_vertical"
+        tools:text="Genre" />
+
+    <ImageView
+        android:id="@+id/list_item_genre_arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginRight="@dimen/imageview_arrow_marginRight"
+        android:layout_marginEnd="@dimen/imageview_arrow_marginRight"/>
+
+</FrameLayout>

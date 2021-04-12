@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.PartTwoPrepFragment"
+    android:orientation="vertical">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/partTwo_instruction_marginTop"
+        android:layout_marginBottom="@dimen/partTwo_instruction_marginBottom"
+        android:layout_marginLeft="@dimen/partTwo_instruction_marginLeft"
+        android:layout_marginRight="@dimen/partTwo_instruction_marginRight"
+        android:textSize="@dimen/fontsize_18sp"
+        android:fontFamily="@font/open_sans"
+        android:text="@string/tv_parttwo_instructions" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/partTwo_plus_size"
+            android:layout_height="@dimen/partTwo_plus_size"
+            android:layout_marginLeft="@dimen/partTwo_plus_marginLeft"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_plus_foreground"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/partTwo_item_marginTop"
+            android:layout_marginBottom="@dimen/partTwo_item_marginBottom"
+            android:layout_marginLeft="@dimen/partTwo_item_marginLeft"
+            android:layout_marginRight="@dimen/partTwo_item_marginRight"
+            android:textSize="@dimen/fontsize_18sp"
+            android:fontFamily="@font/open_sans"
+            android:text="@string/tv_parttwo_tip1" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/partTwo_plus_size"
+            android:layout_height="@dimen/partTwo_plus_size"
+            android:layout_marginLeft="@dimen/partTwo_plus_marginLeft"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_plus_foreground"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/partTwo_item_marginTop"
+            android:layout_marginBottom="@dimen/partTwo_item_marginBottom"
+            android:layout_marginLeft="@dimen/partTwo_item_marginLeft"
+            android:layout_marginRight="@dimen/partTwo_item_marginRight"
+            android:textSize="@dimen/fontsize_18sp"
+            android:fontFamily="@font/open_sans"
+            android:text="@string/tv_parttwo_tip2"
+            android:layout_marginStart="@dimen/partTwo_item_marginLeft"
+            android:layout_marginEnd="@dimen/partTwo_item_marginRight" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/partTwo_plus_size"
+            android:layout_height="@dimen/partTwo_plus_size"
+            android:layout_marginLeft="@dimen/partTwo_plus_marginLeft"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_plus_foreground"
+            android:layout_marginStart="@dimen/partTwo_plus_marginLeft" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/partTwo_item_marginTop"
+            android:layout_marginBottom="@dimen/partTwo_item_marginBottom"
+            android:layout_marginLeft="@dimen/partTwo_item_marginLeft"
+            android:layout_marginRight="@dimen/partTwo_item_marginRight"
+            android:textSize="@dimen/fontsize_18sp"
+            android:fontFamily="@font/open_sans"
+            android:text="@string/tv_parttwo_tip3"
+            android:layout_marginStart="@dimen/partTwo_item_marginLeft"
+            android:layout_marginEnd="@dimen/partTwo_item_marginRight" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/partTwo_plus_size"
+            android:layout_height="@dimen/partTwo_plus_size"
+            android:layout_marginLeft="@dimen/partTwo_plus_marginLeft"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_plus_foreground"
+            android:layout_marginStart="@dimen/partTwo_plus_marginLeft" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/partTwo_item_marginTop"
+            android:layout_marginBottom="@dimen/partTwo_item_marginBottom"
+            android:layout_marginLeft="@dimen/partTwo_item_marginLeft"
+            android:layout_marginRight="@dimen/partTwo_item_marginRight"
+            android:textSize="@dimen/fontsize_18sp"
+            android:fontFamily="@font/open_sans"
+            android:text="@string/tv_parttwo_tip4"
+            android:layout_marginStart="@dimen/partTwo_item_marginLeft"
+            android:layout_marginEnd="@dimen/partTwo_item_marginRight" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/gotitButton"
+        android:layout_width="@dimen/partTwo_button_width"
+        android:layout_height="@dimen/partTwo_button_height"
+        android:layout_marginTop="@dimen/partTwo_button_marginTop"
+        android:layout_marginBottom="@dimen/partTwo_button_marginBottom"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/rounded_button_gray"
+        android:text="Got it!" />
+
+</LinearLayout>

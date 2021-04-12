@@ -4,6 +4,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import careerchangeover.com.valuesvisualizer.Fragments.AboutFragment;
+import careerchangeover.com.valuesvisualizer.Fragments.InfoFragment;
+import careerchangeover.com.valuesvisualizer.Fragments.InstructionsFragment;
+import careerchangeover.com.valuesvisualizer.Fragments.WelcomeFragment;
+
 public class PagerAdapter extends FragmentPagerAdapter {
 
     Fragment fragment;
