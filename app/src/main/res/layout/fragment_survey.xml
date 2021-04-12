@@ -19,7 +19,6 @@
         android:id="@+id/surveyStatementTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:gravity="fill"
         android:paddingStart="23sp"
         android:paddingLeft="23sp"
