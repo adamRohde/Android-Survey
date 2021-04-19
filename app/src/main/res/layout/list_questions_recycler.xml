@@ -10,7 +10,7 @@
     <ImageView
         android:id="@+id/list_item_question_icon"
         android:layout_width="@dimen/survey_icon_size"
-        android:layout_height="42dp"
+        android:layout_height="@dimen/survey_icon_size"
         android:background="@drawable/ic_border_dark"
         android:layout_marginLeft="@dimen/survey_icon_marginLeft"
         android:layout_marginStart="@dimen/survey_icon_marginStart"

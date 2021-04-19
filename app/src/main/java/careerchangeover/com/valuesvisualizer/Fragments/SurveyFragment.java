@@ -119,7 +119,6 @@ public class SurveyFragment extends Fragment implements View.OnClickListener{
         recyclerView.setLayoutManager(layoutManager);
 
         scrollView = (ScrollView)rootView.findViewById(R.id.scroll_view);
-       // scrollView.fullScroll(ScrollView.FOCUS_UP);
         scrollView.smoothScrollBy(-10, -10);
 
         nextButton = (Button)rootView.findViewById(R.id.nextButton);

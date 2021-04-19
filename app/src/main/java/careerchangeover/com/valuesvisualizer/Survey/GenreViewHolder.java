@@ -35,14 +35,10 @@ public class GenreViewHolder extends GroupViewHolder {
     @RequiresApi(api = Build.VERSION_CODES.N)
 
     public void setGenreTitle(ExpandableGroup question, int openGroup, List<SurveyData> surveyData) {
-        // question - used to look at the current question title
-
         int iconNum = 1;
 
         iconNum = getCurrentlyRenderingQuestionID(question, surveyData);
-
-        System.out.println("setGenreTitle flatPosition = " + getCurrentlyRenderingQuestionID(question, surveyData));
-
+        
         TextDrawable drawable_dark = TextDrawable.builder()
                 .beginConfig()
                 .textColor(Color.BLACK)
@@ -59,22 +55,18 @@ public class GenreViewHolder extends GroupViewHolder {
                 .endConfig()
                 .buildRound(String.valueOf(iconNum + 1), Color.WHITE); // radius in px
 
-        //Question checked/answered condition
         if (surveyData.get(iconNum).getHasBeenAnswered()){
             genreName.setText(question.getTitle());
             icon.setBackground(null);
-            icon.setImageResource(R.mipmap.ic_checked);
+            icon.setImageResource(R.mipmap.ic_checked_round);
             genreName.setTextColor(Color.BLACK);
-        //Question not yet answered
         }else{
             genreName.setText(question.getTitle());
             genreName.setTextColor(Color.LTGRAY);
-            //Question is expanded and "in focus".  Being answered
             if ( 0 == getCurrentlyRenderingQuestionID(question, surveyData) || openGroup == iconNum ){
                 icon.setImageDrawable(drawable_dark);
                 genreName.setTextColor(Color.BLACK);
                 icon.setBackgroundResource(R.drawable.ic_border_dark);
-            //Question out of focus.  Greyed out
             }else{
                 icon.setImageDrawable(drawable_light);
                 genreName.setTextColor(Color.LTGRAY);

@@ -10,7 +10,6 @@ public class SurveyData {
 
     public SurveyData() {}
 
-    //questionID
     public void setQuestionID(int _questionNum){
         questionID = _questionNum;
     }
@@ -18,7 +17,6 @@ public class SurveyData {
         return questionID;
     }
 
-    //hasBeenAnswered
     public void setHasBeenAnswered(boolean _hasBeenAnswered){
         hasBeenAnswered = _hasBeenAnswered;
     }
@@ -26,7 +24,6 @@ public class SurveyData {
         return hasBeenAnswered;
     }
 
-    //question
     public void setQuestion(String _question){
         question = _question;
     }
@@ -34,7 +31,6 @@ public class SurveyData {
         return question;
     }
 
-    //dimension
     public void setDimension(String _dimension){
         dimension = _dimension;
     }
@@ -42,7 +38,6 @@ public class SurveyData {
         return dimension;
     }
 
-    //selfRank
     public void setSelfRank(int _selfRank){
         selfRank = _selfRank;
     }
@@ -50,7 +45,6 @@ public class SurveyData {
         return selfRank;
     }
 
-    //employerRank
     public void setEmployerRank(int _employerRank){
         employerRank = _employerRank;
     }

@@ -1,64 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".Fragments.SurveyFragment">
 
-    <ProgressBar
-        android:id="@+id/progressBar1"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="match_parent"
-        android:layout_height="8sp"
-        android:progressDrawable="@drawable/progress_bar"
-        android:layout_marginBottom="-8dp"
-        android:layout_marginTop="-4dp"
-        android:progress="0"/>
-
-    <TextView
-        android:id="@+id/surveyStatementTextView"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="fill"
-        android:paddingStart="23sp"
-        android:paddingLeft="23sp"
-        android:paddingRight="0sp"
-        android:paddingTop="26sp"
-        android:paddingBottom="26sp"
-        android:text="@string/personal_survey_statement"
-        android:textColor="@color/dark_gray"
-        android:textSize="18sp"
-        android:fontFamily="@font/open_sans"/>
+        android:orientation="vertical">
 
-            <!-- TODO: Update blank fragment layout -->
-            <ScrollView
-                android:id="@+id/scroll_view"
+        <ProgressBar
+            android:id="@+id/progressBar1"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="8sp"
+            android:progressDrawable="@drawable/progress_bar"
+            android:layout_marginBottom="-8dp"
+            android:layout_marginTop="-4dp"
+            android:progress="0"/>
+
+        <TextView
+            android:id="@+id/surveyStatementTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="fill"
+            android:paddingStart="23sp"
+            android:paddingLeft="23sp"
+            android:paddingRight="0sp"
+            android:paddingTop="24sp"
+            android:paddingBottom="24sp"
+            android:text="@string/personal_survey_statement"
+            android:textColor="@color/dark_gray"
+            android:textSize="18sp"
+            android:fontFamily="@font/open_sans"/>
+
+    </LinearLayout>
+
+        <ScrollView
+            android:id="@+id/scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="60sp">
+                android:orientation="vertical">
 
-                <LinearLayout
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_marginStart="4dp"
+                    android:layout_marginLeft="4dp"
+                    android:paddingBottom="50sp" />
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recycler_view"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
-                        android:layout_marginLeft="4dp"
-                        android:paddingBottom="50sp" />
-
-                    <Button
-                        android:id="@+id/nextButton"
-                        android:layout_width="156sp"
-                        android:layout_height="44sp"
-                        android:layout_gravity="center"
-                        android:layout_marginBottom="50sp"
-                        android:background="@drawable/rounded_button_gray"
-                        android:text="Next"
-                        android:textColor="@color/background_color" />
-                </LinearLayout>
-            </ScrollView>
-</FrameLayout>
+                <Button
+                    android:id="@+id/nextButton"
+                    android:layout_width="156sp"
+                    android:layout_height="44sp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="50sp"
+                    android:background="@drawable/rounded_button_gray"
+                    android:text="Next"
+                    android:textColor="@color/background_color" />
+            </LinearLayout>
+        </ScrollView>
+</LinearLayout>

@@ -22,8 +22,6 @@ public class DataFactory {
 
         for (String question : questions){
             questionList.add(new CheckQuestion(question, answersList, R.drawable.ic_checked_foreground));
-
-          //  questionList.add(new CheckQuestion(question, answersList,));
         }
         return questionList;
     }
