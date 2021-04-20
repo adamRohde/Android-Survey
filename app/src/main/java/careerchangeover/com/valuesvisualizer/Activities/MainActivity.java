@@ -27,18 +27,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         mPref = PreferenceManager.getDefaultSharedPreferences(this);
-        // default open tutorial flag set to true
         boolean goToTutorial = mPref.getBoolean(seeTutorialPref,true);
 
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
-        // opens tutorial is flag is set to true
         if (goToTutorial) {
             Intent openTutorial = new Intent(MainActivity.this, TutorialActivity.class);
             startActivity(openTutorial);
         }
 
-        // Sets button on click listeners
         findViewById(R.id.takeSelfSurveyButton).setOnClickListener(this);
         findViewById(R.id.takeEmployerSurveyButton).setOnClickListener(this);
         findViewById(R.id.viewResultsButton).setOnClickListener(this);
@@ -47,14 +44,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the main activity menu
         getMenuInflater().inflate(R.menu.menu_main_activity, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here
         switch (item.getItemId()) {
             case R.id.viewTutorial:
                 Intent goToTutorial = new Intent(MainActivity.this,TutorialActivity.class);
@@ -69,24 +64,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.takeSelfSurveyButton:
-                // Switches to personal survey page with extra
                 Intent toSelfEval = new Intent(MainActivity.this, SurveyActivity.class);
                 toSelfEval.putExtra("column_name", dbHandler.COLUMN_SELF_EVAL);
                 startActivity(toSelfEval);
                 break;
             case R.id.takeEmployerSurveyButton:
-                // Switches to employer survey page with extra
                 Intent toEmployerEval = new Intent(MainActivity.this,SurveyActivity.class);
                 toEmployerEval.putExtra("column_name", dbHandler.COLUMN_EMPLOYER_EVAL);
                 startActivity(toEmployerEval);
                 break;
             case R.id.viewResultsButton:
-                // Switches to results page
                 Intent toResults = new Intent(MainActivity.this, ResultsActivity.class);
                 startActivity(toResults);
                 break;
             case R.id.crashButton:
-                throw new RuntimeException("Test Crash"); // Force a crash
+                throw new RuntimeException("Test Crash");
         }
     }
 }

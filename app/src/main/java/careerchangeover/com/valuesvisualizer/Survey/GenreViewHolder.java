@@ -38,7 +38,7 @@ public class GenreViewHolder extends GroupViewHolder {
         int iconNum = 1;
 
         iconNum = getCurrentlyRenderingQuestionID(question, surveyData);
-        
+
         TextDrawable drawable_dark = TextDrawable.builder()
                 .beginConfig()
                 .textColor(Color.BLACK)

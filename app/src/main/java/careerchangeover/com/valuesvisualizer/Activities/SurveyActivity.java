@@ -19,6 +19,7 @@ public class SurveyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_survey);
 
+
         FragmentManager manager = getSupportFragmentManager();
         Fragment fragment = manager.findFragmentById(R.id.fragment_container_survey);
 
@@ -31,20 +32,23 @@ public class SurveyActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(R.string.survey_part1_titles);
-
     }
 
-    @Override
+/*   @Override
     protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        adapter.onSaveInstanceState(outState);
+        if (outState != null) {
+           super.onSaveInstanceState(outState);
+           adapter.onSaveInstanceState(outState);
+       }
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        adapter.onRestoreInstanceState(savedInstanceState);
-    }
+        if (savedInstanceState != null) {
+            super.onRestoreInstanceState(savedInstanceState);
+            adapter.onRestoreInstanceState(savedInstanceState);
+        }
+    }*/
 
 }
 
