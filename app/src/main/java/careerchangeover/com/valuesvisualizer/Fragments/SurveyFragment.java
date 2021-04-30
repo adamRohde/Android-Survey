@@ -38,19 +38,9 @@ import static careerchangeover.com.valuesvisualizer.Survey.DataFactory.makeQandA
  * create an instance of this fragment.
  */
 public class SurveyFragment extends Fragment implements View.OnClickListener{
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Eventually get database code working with app.
     // MyDbHandler myDbHandler;
     //Value[] dbQuestionsArray = new Value[10];
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
     View rootView;
     RecyclerView recyclerView;
     ScrollView scrollView;
@@ -76,20 +66,9 @@ public class SurveyFragment extends Fragment implements View.OnClickListener{
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment SurveyFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static SurveyFragment newInstance(String param1, String param2) {
         SurveyFragment fragment = new SurveyFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -98,9 +77,13 @@ public class SurveyFragment extends Fragment implements View.OnClickListener{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+
         }
+        answersList = Arrays.asList(getResources().getStringArray(R.array.answers));
+        questionsList = Arrays.asList(getResources().getStringArray(R.array.questions));
+        dimensionsList = Arrays.asList(getResources().getStringArray(R.array.dimensions));
+        buildSurveyData(questionsList, dimensionsList);
+        questionnaire = "personal";
     }
 
     @Override
@@ -109,45 +92,49 @@ public class SurveyFragment extends Fragment implements View.OnClickListener{
         rootView = inflater.inflate(R.layout.fragment_survey, container, false);
         column = getActivity().getIntent().getStringExtra("column_name");
 
-        //TODO: Removed temporarily so to get around problems I'm having with the db
+        System.out.println("Hello from lifecycle onCreateView");
+
         //myDbHandler = new MyDbHandler(getActivity());
         //dbQuestionsArray = myDbHandler.getValuesArray();
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
         layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setHasFixedSize(true);
-        recyclerView.setItemViewCacheSize(10);
+        recyclerView.setItemViewCacheSize(11);
         recyclerView.setLayoutManager(layoutManager);
-
         scrollView = (ScrollView)rootView.findViewById(R.id.scroll_view);
         scrollView.smoothScrollBy(-10, -10);
-
         nextButton = (Button)rootView.findViewById(R.id.nextButton);
         progressBar = (ProgressBar)rootView.findViewById(R.id.progressBar1);
         progressBar.setMax(100);
-
-      //  ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle("Survey: Prospective Part I");
-
-        answersList = Arrays.asList(getResources().getStringArray(R.array.answers));
-        questionsList = Arrays.asList(getResources().getStringArray(R.array.questions));
-        dimensionsList = Arrays.asList(getResources().getStringArray(R.array.dimensions));
-
-        //Builds the surveyData object onCreate.  Doesn't update it, just does initial build.
-        buildSurveyData(questionsList, dimensionsList);
-        questionnaire = "personal";
-
+        //((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle("Survey: Prospective Part I");
         questionsListChecker = makeQandA(questionsList, answersList);
         adapter = new SurveyAdapter(getContext(), questionsListChecker, surveyData);
 
         adapter.setChildClickListener(new OnCheckChildClickListener() {
             @Override
             public void onCheckChildCLick(View v, boolean clicked, CheckedExpandableGroup group, int childIndex) {
-                int clickedQuestion = openGroup-1;
-                childClicked = true;
-                if (!surveyData.get(clickedQuestion).getHasBeenAnswered()){
-                    adapter.toggleGroup(openGroup, questionsList);
+                int index = 0;
+                for (String question : questionsList) {
+                    if (question.equals(group.getTitle())) {
+                        surveyData.get(index).setHasBeenAnswered(true);
+                        if ((index+1) != questionsList.size()){
+                            if (!surveyData.get(index + 1).getHasBeenAnswered() && !surveyData.get(index + 1).getIsCurrentlyExpanded()) {
+                                adapter.toggleGroup(index, questionsList);
+                                adapter.toggleGroup(index + 1);
+                                updateProgressBarAndNextButton(surveyData);
+                            }
+                        }else{
+                            surveyData.get(index).setIsCurrentlyExpanded(false);
+                            adapter.toggleGroup(index);
+                            updateProgressBarAndNextButton(surveyData);
+                        }
+                        if (surveyData.get(index).getHasBeenAnswered() && surveyData.get(index).getIsCurrentlyExpanded()) {
+                            surveyData.get(index).setIsCurrentlyExpanded(false);
+                            adapter.toggleGroup(index);
+                        }
+                    }
+                    index++;
                 }
-                surveyData.get(clickedQuestion).setHasBeenAnswered(true);
-                questionsAnswered(surveyData);
             }
         });
 
@@ -156,10 +143,12 @@ public class SurveyFragment extends Fragment implements View.OnClickListener{
             public void onGroupExpanded(ExpandableGroup group) {
                 int index = 0;
                 for (String question : questionsList) {
-                    index++;
                     if (question.equals(group.getTitle())) {
+                        System.out.println("Hello from SurveyFragment ExpandListener line144 index=" + index);
+                        surveyData.get(index).setIsCurrentlyExpanded(true);
                         openGroup = index;
                     }
+                    index++;
                 }
             }
 
@@ -167,13 +156,10 @@ public class SurveyFragment extends Fragment implements View.OnClickListener{
             public void onGroupCollapsed(ExpandableGroup group) {
                 int index = 0;
                 for (String question : questionsList) {
-                    index++;
-                    //Determines what question is being collapsed
                     if (question.equals(group.getTitle())) {
-                        if ((index < questionsList.size()) && !surveyData.get(index).getHasBeenAnswered()){
-                            expandNext(index, childClicked);
-                        }
+                        surveyData.get(index).setIsCurrentlyExpanded(false);
                     }
+                    index++;
                 }
                 childClicked = false;
             }
@@ -188,18 +174,12 @@ public class SurveyFragment extends Fragment implements View.OnClickListener{
     public void buildSurveyData(List<String> questions, List<String> dimensions){
         int i = 0;
         for (String question: questions){
-            i++;
             surveyData.add(new SurveyData());
-            surveyData.get(i-1).setQuestion(question);
-            surveyData.get(i-1).setQuestionID(i-1);
-            surveyData.get(i-1).setHasBeenAnswered(false);
-            surveyData.get(i-1).setDimension(dimensions.get(i-1));
-        }
-    }
-
-    public void expandNext(int expand, boolean clicked){
-        if (clicked){
-            adapter.toggleGroup(expand);
+            surveyData.get(i).setQuestion(question);
+            surveyData.get(i).setQuestionID(i);
+            surveyData.get(i).setHasBeenAnswered(false);
+            surveyData.get(i).setDimension(dimensions.get(i));
+            i++;
         }
     }
 
@@ -225,7 +205,8 @@ public class SurveyFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.nextButton) {
-            System.out.println("hello");
+
+            questionnaire = "employer";
 
             for (int i = 0; i >= 9; i++){
                 surveyData.get(i).setHasBeenAnswered(false);
@@ -245,13 +226,11 @@ public class SurveyFragment extends Fragment implements View.OnClickListener{
         }
     }
 
-    public void questionsAnswered(List<SurveyData> surveyData){
+    public void updateProgressBarAndNextButton(List<SurveyData> surveyData){
         int i = 1;
-        System.out.println("questionAnswered" + surveyData.get(i).getHasBeenAnswered());
 
         for(SurveyData question: surveyData) {
             if (question.getHasBeenAnswered()){
-                System.out.println("questionAnswered " + ((i) * 10));
                 progressBar.setProgress((i) * 10);
                 i++;
             }
@@ -261,6 +240,5 @@ public class SurveyFragment extends Fragment implements View.OnClickListener{
             nextButton.setBackgroundResource(R.drawable.rounded_button_purple_);
             nextButton.setOnClickListener(this);
         }
-        System.out.println("Hello from =" + i);
     }
 }

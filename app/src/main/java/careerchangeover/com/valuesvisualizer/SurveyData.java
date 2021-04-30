@@ -3,6 +3,7 @@ package careerchangeover.com.valuesvisualizer;
 public class SurveyData {
     private int questionID;
     private boolean hasBeenAnswered;
+    private boolean isCurrentlyExpanded;
     private String question;
     private String dimension;
     private int selfRank;
@@ -22,6 +23,13 @@ public class SurveyData {
     }
     public boolean getHasBeenAnswered(){
         return hasBeenAnswered;
+    }
+
+    public void setIsCurrentlyExpanded(boolean _isCurrentlyExpanded){
+        isCurrentlyExpanded = _isCurrentlyExpanded;
+    }
+    public boolean getIsCurrentlyExpanded(){
+        return isCurrentlyExpanded;
     }
 
     public void setQuestion(String _question){

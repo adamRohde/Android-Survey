@@ -35,9 +35,16 @@ public class GenreViewHolder extends GroupViewHolder {
     @RequiresApi(api = Build.VERSION_CODES.N)
 
     public void setGenreTitle(ExpandableGroup question, int openGroup, List<SurveyData> surveyData) {
-        int iconNum = 1;
+        int iconNum = 0;
 
         iconNum = getCurrentlyRenderingQuestionID(question, surveyData);
+
+        System.out.println("Hello from iconNum 1 - " + iconNum);
+
+//        for (int i = 0; i < surveyData.size(); i++){
+//            System.out.println("Hello from is expanded ="+ i + " " + surveyData.get(i).getIsCurrentlyExpanded());
+//            System.out.println("Hello from allData - " + i);
+//        }
 
         TextDrawable drawable_dark = TextDrawable.builder()
                 .beginConfig()
@@ -55,11 +62,14 @@ public class GenreViewHolder extends GroupViewHolder {
                 .endConfig()
                 .buildRound(String.valueOf(iconNum + 1), Color.WHITE); // radius in px
 
-        if (surveyData.get(iconNum).getHasBeenAnswered()){
+        // && !surveyData.get(iconNum + 1).getIsCurrentlyExpanded()
+
+        if (surveyData.get(iconNum).getHasBeenAnswered() ){
             genreName.setText(question.getTitle());
             icon.setBackground(null);
             icon.setImageResource(R.mipmap.ic_checked_round);
             genreName.setTextColor(Color.BLACK);
+            System.out.println("Hello from iconNum 2 - " + iconNum);
         }else{
             genreName.setText(question.getTitle());
             genreName.setTextColor(Color.LTGRAY);
@@ -78,6 +88,10 @@ public class GenreViewHolder extends GroupViewHolder {
     public int getCurrentlyRenderingQuestionID(ExpandableGroup question, List<SurveyData> surveyData ){
         int getRendering = 0;
         for (int i = 0; i < surveyData.size(); i++){
+            if (surveyData.get(i).getIsCurrentlyExpanded()){
+                System.out.println("Hello from is expanded ="+ i + " " + surveyData.get(i).getIsCurrentlyExpanded());
+            }
+
             if (question.getTitle() == surveyData.get(i).getQuestion()){
                 getRendering = i;
             }

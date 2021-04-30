@@ -48,19 +48,15 @@ public class SurveyAdapter extends CheckableChildRecyclerViewAdapter<GenreViewHo
 
     @Override
     public GenreViewHolder onCreateGroupViewHolder(ViewGroup parent, int viewType) {
-        index++;
-        if (index >= 10){
-            index = 0;
-        }
         view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.list_questions_recycler, parent, false);
         return new GenreViewHolder(view);
     }
 
     public boolean toggleGroup(int flatPos, List<String> Questions) {
+        openGroup = flatPos + 1;
         questionArray = Questions;
-        openGroup = flatPos;
-        System.out.println("setGenreTitle openGroup = " + openGroup);
+        System.out.println("Hello from SurveyAdapter toggleGroup line59 = " + openGroup);
         return super.toggleGroup(flatPos);
     }
 
