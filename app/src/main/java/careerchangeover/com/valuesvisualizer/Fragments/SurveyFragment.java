@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +26,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import careerchangeover.com.valuesvisualizer.Survey.BuildSurvey;
 import careerchangeover.com.valuesvisualizer.Survey.CheckQuestion;
+import careerchangeover.com.valuesvisualizer.Survey.CollapseQuestion;
 import careerchangeover.com.valuesvisualizer.Survey.SurveyAdapter;
 import careerchangeover.com.valuesvisualizer.R;
 import careerchangeover.com.valuesvisualizer.SurveyData;
@@ -62,6 +65,9 @@ public class SurveyFragment extends Fragment implements View.OnClickListener{
     ProgressBar progressBar;
     String questionnaire = null;
 
+    BuildSurvey survey = new BuildSurvey();
+    CollapseQuestion collapseQuestion = new CollapseQuestion();
+
     public SurveyFragment() {
         // Required empty public constructor
     }
@@ -82,8 +88,9 @@ public class SurveyFragment extends Fragment implements View.OnClickListener{
         answersList = Arrays.asList(getResources().getStringArray(R.array.answers));
         questionsList = Arrays.asList(getResources().getStringArray(R.array.questions));
         dimensionsList = Arrays.asList(getResources().getStringArray(R.array.dimensions));
-        buildSurveyData(questionsList, dimensionsList);
-        questionnaire = "personal";
+
+        survey.setSurveyData(questionsList, dimensionsList);
+        surveyData = survey.getSurveyData();
     }
 
     @Override
@@ -91,11 +98,6 @@ public class SurveyFragment extends Fragment implements View.OnClickListener{
                              Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_survey, container, false);
         column = getActivity().getIntent().getStringExtra("column_name");
-
-        System.out.println("Hello from lifecycle onCreateView");
-
-        //myDbHandler = new MyDbHandler(getActivity());
-        //dbQuestionsArray = myDbHandler.getValuesArray();
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
         layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setHasFixedSize(true);
@@ -106,37 +108,50 @@ public class SurveyFragment extends Fragment implements View.OnClickListener{
         nextButton = (Button)rootView.findViewById(R.id.nextButton);
         progressBar = (ProgressBar)rootView.findViewById(R.id.progressBar1);
         progressBar.setMax(100);
-        //((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle("Survey: Prospective Part I");
         questionsListChecker = makeQandA(questionsList, answersList);
-        adapter = new SurveyAdapter(getContext(), questionsListChecker, surveyData);
 
-        adapter.setChildClickListener(new OnCheckChildClickListener() {
-            @Override
-            public void onCheckChildCLick(View v, boolean clicked, CheckedExpandableGroup group, int childIndex) {
-                int index = 0;
-                for (String question : questionsList) {
-                    if (question.equals(group.getTitle())) {
-                        surveyData.get(index).setHasBeenAnswered(true);
-                        if ((index+1) != questionsList.size()){
-                            if (!surveyData.get(index + 1).getHasBeenAnswered() && !surveyData.get(index + 1).getIsCurrentlyExpanded()) {
-                                adapter.toggleGroup(index, questionsList);
-                                adapter.toggleGroup(index + 1);
-                                updateProgressBarAndNextButton(surveyData);
-                            }
-                        }else{
-                            surveyData.get(index).setIsCurrentlyExpanded(false);
-                            adapter.toggleGroup(index);
-                            updateProgressBarAndNextButton(surveyData);
-                        }
-                        if (surveyData.get(index).getHasBeenAnswered() && surveyData.get(index).getIsCurrentlyExpanded()) {
-                            surveyData.get(index).setIsCurrentlyExpanded(false);
-                            adapter.toggleGroup(index);
-                        }
-                    }
-                    index++;
-                }
-            }
-        });
+        collapseQuestion.setAdapter(getContext(), questionsListChecker, surveyData);
+        adapter = collapseQuestion.getAdapter();
+        collapseQuestion.setQuestionsList(questionsList);
+        collapseQuestion.setSurveyData(surveyData);
+        collapseQuestion.onClick(rootView);
+
+      // adapter = new SurveyAdapter(getContext(), questionsListChecker, surveyData);
+
+//        int i = 0;
+//        int j = 0;
+//
+//        if (questionsListChecker.get(i).selectedChildren[j]){
+//
+//        }
+
+//        adapter.setChildClickListener(new OnCheckChildClickListener() {
+//            @Override
+//            public void onCheckChildCLick(View v, boolean clicked, CheckedExpandableGroup group, int childIndex) {
+//                int index = 0;
+//                for (String question : questionsList) {
+//                    if (question.equals(group.getTitle())) {
+//                        surveyData.get(index).setHasBeenAnswered(true);
+//                        if ((index+1) == questionsList.size()){
+//                            surveyData.get(index).setIsCurrentlyExpanded(false);
+//                            adapter.toggleGroup(index);
+//                            updateProgressBarAndNextButton(surveyData);
+//                        }else{
+//                            if (!surveyData.get(index + 1).getHasBeenAnswered() && !surveyData.get(index + 1).getIsCurrentlyExpanded()) {
+//                                adapter.toggleGroup(index, questionsList);
+//                                adapter.toggleGroup(index + 1);
+//                                updateProgressBarAndNextButton(surveyData);
+//                            }
+//                        }
+//                        if (surveyData.get(index).getHasBeenAnswered() && surveyData.get(index).getIsCurrentlyExpanded()) {
+//                            surveyData.get(index).setIsCurrentlyExpanded(false);
+//                            adapter.toggleGroup(index);
+//                        }
+//                    }
+//                    index++;
+//                }
+//            }
+//        });
 
         adapter.setOnGroupExpandCollapseListener(new GroupExpandCollapseListener() {
             @Override
@@ -154,6 +169,7 @@ public class SurveyFragment extends Fragment implements View.OnClickListener{
 
             @Override
             public void onGroupCollapsed(ExpandableGroup group) {
+                System.out.println("Hello from onGroupCollapsed");
                 int index = 0;
                 for (String question : questionsList) {
                     if (question.equals(group.getTitle())) {
@@ -169,18 +185,6 @@ public class SurveyFragment extends Fragment implements View.OnClickListener{
         adapter.toggleGroup(0);
         recyclerView.setAdapter(adapter);
         return rootView;
-    }
-
-    public void buildSurveyData(List<String> questions, List<String> dimensions){
-        int i = 0;
-        for (String question: questions){
-            surveyData.add(new SurveyData());
-            surveyData.get(i).setQuestion(question);
-            surveyData.get(i).setQuestionID(i);
-            surveyData.get(i).setHasBeenAnswered(false);
-            surveyData.get(i).setDimension(dimensions.get(i));
-            i++;
-        }
     }
 
     public void setSurveyStatement() {

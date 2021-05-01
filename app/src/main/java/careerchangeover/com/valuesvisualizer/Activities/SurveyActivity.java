@@ -3,6 +3,7 @@ package careerchangeover.com.valuesvisualizer.Activities;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -29,9 +30,9 @@ public class SurveyActivity extends AppCompatActivity {
             transaction.commit();
         }
 
-       // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-      //  getSupportActionBar().setTitle(R.string.survey_part1_titles);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle(R.string.my_values);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
-
 }
-

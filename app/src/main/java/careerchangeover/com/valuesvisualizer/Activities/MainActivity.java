@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -35,6 +37,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent openTutorial = new Intent(MainActivity.this, TutorialActivity.class);
             startActivity(openTutorial);
         }
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle(R.string.home);
 
         findViewById(R.id.takeSelfSurveyButton).setOnClickListener(this);
         findViewById(R.id.takeEmployerSurveyButton).setOnClickListener(this);

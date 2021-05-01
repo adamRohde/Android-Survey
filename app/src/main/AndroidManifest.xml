@@ -12,7 +12,7 @@
 
         <activity android:name=".Activities.MainActivity"></activity>
 
-        <activity android:name=".Activities.SurveyActivity" />
+        <activity android:name=".Activities.SurveyActivity" android:parentActivityName=".Activities.MainActivity" />
 
         <activity android:name=".DisclaimerPopUp" />
 

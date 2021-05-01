@@ -8,9 +8,9 @@
     <CheckedTextView
         android:id="@+id/list_answer_check"
         android:layout_width="match_parent"
-        android:layout_height="28dp"
+        android:layout_height="38dp"
         android:drawablePadding="10sp"
-        android:layout_marginBottom="29sp"
+        android:layout_marginBottom="15sp"
         android:layout_marginEnd="36dp"
         android:layout_marginLeft="72dp"
         android:layout_marginRight="16dp"

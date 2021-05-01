@@ -104,6 +104,8 @@
     <string name="tv_parttwo_tip2">Interactions with a recruiter</string>
     <string name="tv_parttwo_tip3">Interview with a hiring manager/team</string>
     <string name="tv_parttwo_tip4">Job requirements</string>
+    <string name="home">Home</string>
+    <string name="my_values">My Values</string>
 
 
 </resources>

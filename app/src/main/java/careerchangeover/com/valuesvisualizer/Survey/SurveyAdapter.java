@@ -18,7 +18,7 @@ import java.util.List;
 import careerchangeover.com.valuesvisualizer.R;
 import careerchangeover.com.valuesvisualizer.SurveyData;
 
-public class SurveyAdapter extends CheckableChildRecyclerViewAdapter<GenreViewHolder, AnswerViewHolder> {
+public class SurveyAdapter extends CheckableChildRecyclerViewAdapter<QuestionViewHolder, AnswerViewHolder> {
     int openGroup;
     public List<CheckQuestion> QuestionGroups;
     public List<SurveyData> surveyData;
@@ -43,26 +43,27 @@ public class SurveyAdapter extends CheckableChildRecyclerViewAdapter<GenreViewHo
     public void onBindCheckChildViewHolder(AnswerViewHolder holder, int position,
                                            CheckedExpandableGroup group, int childIndex) {
         final Answers answers = (Answers) group.getItems().get(childIndex);
-        holder.setArtistName(answers.getName());
+        holder.setAnswerName(answers.getName());
     }
 
     @Override
-    public GenreViewHolder onCreateGroupViewHolder(ViewGroup parent, int viewType) {
+    public QuestionViewHolder onCreateGroupViewHolder(ViewGroup parent, int viewType) {
         view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.list_questions_recycler, parent, false);
-        return new GenreViewHolder(view);
+        return new QuestionViewHolder(view);
     }
 
     public boolean toggleGroup(int flatPos, List<String> Questions) {
+        index++;
         openGroup = flatPos + 1;
         questionArray = Questions;
-        System.out.println("Hello from SurveyAdapter toggleGroup line59 = " + openGroup);
+        System.out.println("Hello from toggleGroup = " + index);
         return super.toggleGroup(flatPos);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
-    public void onBindGroupViewHolder(GenreViewHolder holder,  int flatPosition, ExpandableGroup group) {
+    public void onBindGroupViewHolder(QuestionViewHolder holder, int flatPosition, ExpandableGroup group) {
         holder.setGenreTitle(group, openGroup, surveyData);
     }
 }

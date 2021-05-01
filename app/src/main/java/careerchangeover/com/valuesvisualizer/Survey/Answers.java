@@ -9,9 +9,8 @@ public class Answers implements Parcelable {
     private String name;
     private boolean isFavorite;
 
-    public Answers(String name, boolean isFavorite) {
+    public Answers(String name) {
         this.name = name;
-        this.isFavorite = isFavorite;
     }
 
     protected Answers(Parcel in) {
@@ -22,10 +21,6 @@ public class Answers implements Parcelable {
         return name;
     }
 
-    public boolean isFavorite() {
-        return isFavorite;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -33,7 +28,6 @@ public class Answers implements Parcelable {
 
         Answers artist = (Answers) o;
 
-        if (isFavorite() != artist.isFavorite()) return false;
         return getName() != null ? getName().equals(artist.getName()) : artist.getName() == null;
 
     }
@@ -41,7 +35,7 @@ public class Answers implements Parcelable {
     @Override
     public int hashCode() {
         int result = getName() != null ? getName().hashCode() : 0;
-        result = 31 * result + (isFavorite() ? 1 : 0);
+       // result = 31 * result + (isFavorite() ? 1 : 0);
         return result;
     }
 

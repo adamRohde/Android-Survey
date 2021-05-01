@@ -23,8 +23,8 @@ public class AnswerViewHolder extends CheckableChildViewHolder {
         return childCheckedTextView;
     }
 
-    public void setArtistName(String artistName) {
-        childCheckedTextView.setText(artistName);
+    public void setAnswerName(String answerName) {
+        childCheckedTextView.setText(answerName);
     }
 }
 

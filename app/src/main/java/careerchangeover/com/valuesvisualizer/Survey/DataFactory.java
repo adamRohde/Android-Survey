@@ -17,7 +17,7 @@ public class DataFactory {
         answersList = new ArrayList<>();
 
         for (String answer : answers) {
-            answersList.add(new Answers(answer, false));
+            answersList.add(new Answers(answer));
         }
 
         for (String question : questions){

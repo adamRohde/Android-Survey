@@ -21,30 +21,23 @@ import careerchangeover.com.valuesvisualizer.SurveyData;
 
 import static java.lang.StrictMath.floorMod;
 
-public class GenreViewHolder extends GroupViewHolder {
+public class QuestionViewHolder extends GroupViewHolder {
     private final TextView genreName;
     private final ImageView icon;
 
-    public GenreViewHolder(View itemView) {
+    public QuestionViewHolder(View itemView) {
         super(itemView);
         genreName = (TextView) itemView.findViewById(R.id.list_item_genre_name);
         icon = (ImageView) itemView.findViewById(R.id.list_item_question_icon);
     }
 
-    @SuppressLint("ResourceAsColor")
-    @RequiresApi(api = Build.VERSION_CODES.N)
+//    @SuppressLint("ResourceAsColor")
+//    @RequiresApi(api = Build.VERSION_CODES.N)
 
     public void setGenreTitle(ExpandableGroup question, int openGroup, List<SurveyData> surveyData) {
         int iconNum = 0;
 
         iconNum = getCurrentlyRenderingQuestionID(question, surveyData);
-
-        System.out.println("Hello from iconNum 1 - " + iconNum);
-
-//        for (int i = 0; i < surveyData.size(); i++){
-//            System.out.println("Hello from is expanded ="+ i + " " + surveyData.get(i).getIsCurrentlyExpanded());
-//            System.out.println("Hello from allData - " + i);
-//        }
 
         TextDrawable drawable_dark = TextDrawable.builder()
                 .beginConfig()
