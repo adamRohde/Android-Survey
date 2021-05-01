@@ -30,5 +30,4 @@ public class BuildSurvey {
     public List<SurveyData> getSurveyData() {
         return surveyData;
     }
-
 }

@@ -6,19 +6,21 @@ import android.view.View;
 
 import com.thoughtbot.expandablecheckrecyclerview.listeners.OnCheckChildClickListener;
 import com.thoughtbot.expandablecheckrecyclerview.models.CheckedExpandableGroup;
+import com.thoughtbot.expandablerecyclerview.listeners.GroupExpandCollapseListener;
+import com.thoughtbot.expandablerecyclerview.models.ExpandableGroup;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import careerchangeover.com.valuesvisualizer.SurveyData;
 
-public class CollapseQuestion extends Activity implements View.OnClickListener {
+public class ExpandingAndCollapsingQuestions extends Activity implements View.OnClickListener {
 
     private SurveyAdapter adapter;
     private List<String> questionsList = new ArrayList<>();
     private List<SurveyData> surveyData = new ArrayList<SurveyData>();
 
-    public CollapseQuestion() {
+    public ExpandingAndCollapsingQuestions() {
     }
 
     public SurveyAdapter getAdapter() {
@@ -59,6 +61,36 @@ public class CollapseQuestion extends Activity implements View.OnClickListener {
                             surveyData.get(index).setIsCurrentlyExpanded(false);
                             adapter.toggleGroup(index);
                         }
+                    }
+                    index++;
+                }
+            }
+        });
+    }
+
+    public void onGroupExpand(){
+        adapter.setOnGroupExpandCollapseListener(new GroupExpandCollapseListener() {
+            @Override
+            public void onGroupExpanded(ExpandableGroup group) {
+                int index = 0;
+                for (String question : questionsList) {
+                    if (question.equals(group.getTitle())) {
+                        System.out.println("Hello from SurveyFragment ExpandListener line144 index=" + index);
+                        surveyData.get(index).setIsCurrentlyExpanded(true);
+                    }
+                    index++;
+                }
+            }
+
+            @Override
+            public void onGroupCollapsed(ExpandableGroup group) {
+
+                System.out.println("Hello from onGroupCollapsed");
+
+                int index = 0;
+                for (String question : questionsList) {
+                    if (question.equals(group.getTitle())) {
+                        surveyData.get(index).setIsCurrentlyExpanded(false);
                     }
                     index++;
                 }

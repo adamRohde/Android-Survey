@@ -8,7 +8,6 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,18 +16,13 @@ import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.thoughtbot.expandablecheckrecyclerview.listeners.OnCheckChildClickListener;
-import com.thoughtbot.expandablecheckrecyclerview.models.CheckedExpandableGroup;
-import com.thoughtbot.expandablerecyclerview.listeners.GroupExpandCollapseListener;
-import com.thoughtbot.expandablerecyclerview.models.ExpandableGroup;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import careerchangeover.com.valuesvisualizer.Survey.BuildSurvey;
 import careerchangeover.com.valuesvisualizer.Survey.CheckQuestion;
-import careerchangeover.com.valuesvisualizer.Survey.CollapseQuestion;
+import careerchangeover.com.valuesvisualizer.Survey.ExpandingAndCollapsingQuestions;
 import careerchangeover.com.valuesvisualizer.Survey.SurveyAdapter;
 import careerchangeover.com.valuesvisualizer.R;
 import careerchangeover.com.valuesvisualizer.SurveyData;
@@ -41,9 +35,6 @@ import static careerchangeover.com.valuesvisualizer.Survey.DataFactory.makeQandA
  * create an instance of this fragment.
  */
 public class SurveyFragment extends Fragment implements View.OnClickListener{
-    // MyDbHandler myDbHandler;
-    //Value[] dbQuestionsArray = new Value[10];
-
     View rootView;
     RecyclerView recyclerView;
     ScrollView scrollView;
@@ -59,14 +50,12 @@ public class SurveyFragment extends Fragment implements View.OnClickListener{
     List<String> dimensionsList = new ArrayList<>();
     List<SurveyData> surveyData = new ArrayList<SurveyData>();
 
-    int openGroup = 0;
-    boolean childClicked = false;
     Button nextButton;
     ProgressBar progressBar;
     String questionnaire = null;
 
     BuildSurvey survey = new BuildSurvey();
-    CollapseQuestion collapseQuestion = new CollapseQuestion();
+    ExpandingAndCollapsingQuestions collapseQuestion = new ExpandingAndCollapsingQuestions();
 
     public SurveyFragment() {
         // Required empty public constructor
@@ -115,71 +104,7 @@ public class SurveyFragment extends Fragment implements View.OnClickListener{
         collapseQuestion.setQuestionsList(questionsList);
         collapseQuestion.setSurveyData(surveyData);
         collapseQuestion.onClick(rootView);
-
-      // adapter = new SurveyAdapter(getContext(), questionsListChecker, surveyData);
-
-//        int i = 0;
-//        int j = 0;
-//
-//        if (questionsListChecker.get(i).selectedChildren[j]){
-//
-//        }
-
-//        adapter.setChildClickListener(new OnCheckChildClickListener() {
-//            @Override
-//            public void onCheckChildCLick(View v, boolean clicked, CheckedExpandableGroup group, int childIndex) {
-//                int index = 0;
-//                for (String question : questionsList) {
-//                    if (question.equals(group.getTitle())) {
-//                        surveyData.get(index).setHasBeenAnswered(true);
-//                        if ((index+1) == questionsList.size()){
-//                            surveyData.get(index).setIsCurrentlyExpanded(false);
-//                            adapter.toggleGroup(index);
-//                            updateProgressBarAndNextButton(surveyData);
-//                        }else{
-//                            if (!surveyData.get(index + 1).getHasBeenAnswered() && !surveyData.get(index + 1).getIsCurrentlyExpanded()) {
-//                                adapter.toggleGroup(index, questionsList);
-//                                adapter.toggleGroup(index + 1);
-//                                updateProgressBarAndNextButton(surveyData);
-//                            }
-//                        }
-//                        if (surveyData.get(index).getHasBeenAnswered() && surveyData.get(index).getIsCurrentlyExpanded()) {
-//                            surveyData.get(index).setIsCurrentlyExpanded(false);
-//                            adapter.toggleGroup(index);
-//                        }
-//                    }
-//                    index++;
-//                }
-//            }
-//        });
-
-        adapter.setOnGroupExpandCollapseListener(new GroupExpandCollapseListener() {
-            @Override
-            public void onGroupExpanded(ExpandableGroup group) {
-                int index = 0;
-                for (String question : questionsList) {
-                    if (question.equals(group.getTitle())) {
-                        System.out.println("Hello from SurveyFragment ExpandListener line144 index=" + index);
-                        surveyData.get(index).setIsCurrentlyExpanded(true);
-                        openGroup = index;
-                    }
-                    index++;
-                }
-            }
-
-            @Override
-            public void onGroupCollapsed(ExpandableGroup group) {
-                System.out.println("Hello from onGroupCollapsed");
-                int index = 0;
-                for (String question : questionsList) {
-                    if (question.equals(group.getTitle())) {
-                        surveyData.get(index).setIsCurrentlyExpanded(false);
-                    }
-                    index++;
-                }
-                childClicked = false;
-            }
-        });
+        collapseQuestion.onGroupExpand();
 
         setSurveyStatement();
         adapter.toggleGroup(0);
