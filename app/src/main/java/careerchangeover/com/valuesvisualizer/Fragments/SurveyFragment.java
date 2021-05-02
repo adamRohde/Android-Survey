@@ -66,16 +66,14 @@ public class SurveyFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-    //Resources
+
         answersList = Arrays.asList(getResources().getStringArray(R.array.answers));
         questionsList = Arrays.asList(getResources().getStringArray(R.array.questions));
         dimensionsList = Arrays.asList(getResources().getStringArray(R.array.dimensions));
 
-    //Survey
         survey.setSurveyData(questionsList, dimensionsList);
         surveyData = survey.getSurveyData();
 
-    //Survey Business Logic
         questionsListChecker = makeQandA(questionsList, answersList);
         expandingAndCollapsingQuestions.setAdapter(getContext(), questionsListChecker, surveyData);
         adapter = expandingAndCollapsingQuestions.getAdapter();
@@ -91,38 +89,31 @@ public class SurveyFragment extends Fragment implements View.OnClickListener{
         rootView = inflater.inflate(R.layout.fragment_survey, container, false);
         column = getActivity().getIntent().getStringExtra("column_name");
 
-    //RecyclerView
         layoutManager = new LinearLayoutManager(getActivity());
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemViewCacheSize(11);
         recyclerView.setLayoutManager(layoutManager);
 
-    //ScrollView
         scrollView = (ScrollView)rootView.findViewById(R.id.scroll_view);
         scrollView.smoothScrollBy(-10, -10);
 
-    //NextButton
         nextButton = (Button)rootView.findViewById(R.id.nextButton);
 
-    //ProgressBar
         SurveyDataProgressBar surveyDataProgressBar;
         surveyDataProgressBar = (SurveyDataProgressBar)(ProgressBar)rootView.findViewById(R.id.progressBar1);
         surveyDataProgressBar.setMax(100);
         expandingAndCollapsingQuestions.setListener(surveyDataProgressBar);
 
-    //TextView Survey Statement
         tvSurveyStatement = rootView.findViewById(R.id.surveyStatementTextView);
         tvSurveyStatement.setAllCaps(true);
         tvSurveyStatement.bringToFront();
         surveyStatement.setQuestionnaire("personal");
         tvSurveyStatement.setText(surveyStatement.getSurveyStatement());
 
-    //Next Button
         Button nextButton = rootView.findViewById(R.id.nextButton);
         nextButton.setOnClickListener(this);
 
-    //Random
         adapter.toggleGroup(0);
         recyclerView.setAdapter(adapter);
         return rootView;
