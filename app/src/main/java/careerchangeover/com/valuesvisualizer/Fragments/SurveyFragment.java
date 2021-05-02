@@ -52,8 +52,6 @@ public class SurveyFragment extends Fragment implements View.OnClickListener{
     ExpandingAndCollapsingQuestions expandingAndCollapsingQuestions = new ExpandingAndCollapsingQuestions();
     SetSurveyStatement surveyStatement = new SetSurveyStatement();
 
-    private int temp = 0;
-
     public SurveyFragment() {
         // Required empty public constructor
     }
@@ -68,10 +66,6 @@ public class SurveyFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-
-        }
-
     //Resources
         answersList = Arrays.asList(getResources().getStringArray(R.array.answers));
         questionsList = Arrays.asList(getResources().getStringArray(R.array.questions));
@@ -80,6 +74,15 @@ public class SurveyFragment extends Fragment implements View.OnClickListener{
     //Survey
         survey.setSurveyData(questionsList, dimensionsList);
         surveyData = survey.getSurveyData();
+
+    //Survey Business Logic
+        questionsListChecker = makeQandA(questionsList, answersList);
+        expandingAndCollapsingQuestions.setAdapter(getContext(), questionsListChecker, surveyData);
+        adapter = expandingAndCollapsingQuestions.getAdapter();
+        expandingAndCollapsingQuestions.setQuestionsList(questionsList);
+        expandingAndCollapsingQuestions.setSurveyData(surveyData);
+        expandingAndCollapsingQuestions.onClick(rootView);
+        expandingAndCollapsingQuestions.onGroupExpand();
     }
 
     @Override
@@ -106,6 +109,7 @@ public class SurveyFragment extends Fragment implements View.OnClickListener{
         SurveyDataProgressBar surveyDataProgressBar;
         surveyDataProgressBar = (SurveyDataProgressBar)(ProgressBar)rootView.findViewById(R.id.progressBar1);
         surveyDataProgressBar.setMax(100);
+        expandingAndCollapsingQuestions.setListener(surveyDataProgressBar);
 
     //TextView Survey Statement
         tvSurveyStatement = rootView.findViewById(R.id.surveyStatementTextView);
@@ -114,29 +118,19 @@ public class SurveyFragment extends Fragment implements View.OnClickListener{
         surveyStatement.setQuestionnaire("personal");
         tvSurveyStatement.setText(surveyStatement.getSurveyStatement());
 
-    //Survey Business Logic
-        questionsListChecker = makeQandA(questionsList, answersList);
-        expandingAndCollapsingQuestions.setAdapter(getContext(), questionsListChecker, surveyData);
-        adapter = expandingAndCollapsingQuestions.getAdapter();
-        expandingAndCollapsingQuestions.setQuestionsList(questionsList);
-        expandingAndCollapsingQuestions.setSurveyData(surveyData);
-        expandingAndCollapsingQuestions.onClick(rootView);
-        expandingAndCollapsingQuestions.onGroupExpand();
-        expandingAndCollapsingQuestions.setListener(surveyDataProgressBar);
-        adapter.toggleGroup(0);
-
+    //Next Button
         Button nextButton = rootView.findViewById(R.id.nextButton);
         nextButton.setOnClickListener(this);
 
+    //Random
+        adapter.toggleGroup(0);
         recyclerView.setAdapter(adapter);
         return rootView;
     }
 
     @Override
     public void onClick(View v) {
-
        System.out.println("Hello from onClick  ");
-
     }
 
 //    public void updateProgressBarAndNextButton(List<SurveyData> surveyData){
