@@ -18,10 +18,26 @@ public class ExpandingAndCollapsingQuestions extends Activity implements View.On
 
     private SurveyAdapter adapter;
     private List<String> questionsList = new ArrayList<>();
-    private List<SurveyData> surveyData = new ArrayList<SurveyData>();
+    private static List<SurveyData> surveyData = new ArrayList<SurveyData>();
+    int mValue;
+    private IntValueStoreListener mListener;
 
-    public ExpandingAndCollapsingQuestions() {
+    public void setListener(IntValueStoreListener listener) {
+        mListener = listener;
     }
+
+    private void setValue(int newValue) {
+        mValue = newValue;
+        if (mListener != null) {
+            mListener.onValueChanged(mValue);
+        }
+    }
+
+    public static interface IntValueStoreListener {
+        void onValueChanged(int newValue);
+    }
+
+    public ExpandingAndCollapsingQuestions() {}
 
     public SurveyAdapter getAdapter() {
         return adapter;
@@ -48,6 +64,7 @@ public class ExpandingAndCollapsingQuestions extends Activity implements View.On
                 for (String question : questionsList) {
                     if (question.equals(group.getTitle())) {
                         surveyData.get(index).setHasBeenAnswered(true);
+                        setValue((index + 1) * 10);
                         if ((index+1) == questionsList.size()){
                             surveyData.get(index).setIsCurrentlyExpanded(false);
                             adapter.toggleGroup(index);
@@ -75,7 +92,6 @@ public class ExpandingAndCollapsingQuestions extends Activity implements View.On
                 int index = 0;
                 for (String question : questionsList) {
                     if (question.equals(group.getTitle())) {
-                        System.out.println("Hello from SurveyFragment ExpandListener line144 index=" + index);
                         surveyData.get(index).setIsCurrentlyExpanded(true);
                     }
                     index++;
@@ -84,9 +100,6 @@ public class ExpandingAndCollapsingQuestions extends Activity implements View.On
 
             @Override
             public void onGroupCollapsed(ExpandableGroup group) {
-
-                System.out.println("Hello from onGroupCollapsed");
-
                 int index = 0;
                 for (String question : questionsList) {
                     if (question.equals(group.getTitle())) {
@@ -97,4 +110,10 @@ public class ExpandingAndCollapsingQuestions extends Activity implements View.On
             }
         });
     }
+
+    public List<SurveyData> getSurveyData(){
+        System.out.println("Hello from progress getSurveyData");
+        return surveyData;
+    }
+
 }

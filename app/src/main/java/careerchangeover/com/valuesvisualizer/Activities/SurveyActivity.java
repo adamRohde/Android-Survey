@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentTransaction;
 import careerchangeover.com.valuesvisualizer.Fragments.SurveyFragment;
 import careerchangeover.com.valuesvisualizer.R;
 import careerchangeover.com.valuesvisualizer.Survey.SurveyAdapter;
+import careerchangeover.com.valuesvisualizer.Survey.SurveyDataProgressBar;
 
 public class SurveyActivity extends AppCompatActivity {
     SurveyAdapter adapter;

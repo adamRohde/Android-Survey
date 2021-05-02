@@ -10,7 +10,6 @@ public class BuildSurvey {
     private List<SurveyData> surveyData = new ArrayList<SurveyData>();
 
     public BuildSurvey() {
-
     }
 
     public void setSurveyData(List<String> questions, List<String> dimensions) {
@@ -25,6 +24,7 @@ public class BuildSurvey {
         }
 
         this.surveyData = surveyData;
+
     }
 
     public List<SurveyData> getSurveyData() {
