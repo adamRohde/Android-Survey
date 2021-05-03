@@ -7,36 +7,49 @@
     android:layout_marginTop="23sp"
     android:layout_marginBottom="23dp">
 
-    <ImageView
-        android:id="@+id/list_item_question_icon"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:background="@drawable/ic_border_dark"
-        android:layout_marginLeft="@dimen/survey_icon_marginLeft"
-        android:layout_marginStart="@dimen/survey_icon_marginStart"
-        android:gravity="center_vertical"
-        tools:src="1"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/list_item_question"
-        android:background="@color/background_color"
-        android:layout_width="wrap_content"
-        android:layout_height="42dp"
-        android:textSize="16sp"
-        android:fontFamily="@font/open_sans"
-        android:layout_marginLeft="@dimen/survey_question_marginLeft"
-        android:layout_marginStart="@dimen/survey_question_marginLeft"
-        android:layout_marginRight="@dimen/survey_question_marginRight"
-        android:layout_marginEnd="@dimen/survey_question_marginRight"
-        android:gravity="center_vertical"
-        tools:text="Genre" />
+        <ImageView
+            android:id="@+id/list_item_question_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_border_dark"
+            android:layout_marginLeft="@dimen/survey_icon_marginLeft"
+            android:layout_marginStart="@dimen/survey_icon_marginStart"
+            android:gravity="center_vertical"
+            tools:src="1"/>
 
-    <ImageView
-        android:id="@+id/list_item_genre_arrow"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_gravity="center_vertical"
-        android:layout_marginRight="@dimen/imageview_arrow_marginRight"
-        android:layout_marginEnd="@dimen/imageview_arrow_marginRight"/>
+        <TextView
+            android:id="@+id/list_item_question"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="25sp"
+            android:layout_marginLeft="25sp"
+            android:layout_marginEnd="25sp"
+            android:layout_marginRight="25sp"
+            android:background="@color/background_color"
+            android:fontFamily="@font/montserrat"
+            android:gravity="fill_vertical"
+            android:textColor="#4F4F4F"
+            android:textSize="18sp"
+            tools:text="Genre" />
+
+        <ImageView
+            android:id="@+id/list_item_genre_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="@dimen/imageview_arrow_marginRight"
+            android:layout_marginEnd="@dimen/imageview_arrow_marginRight"/>
+
+
+
+    </LinearLayout>
+
 
 </FrameLayout>
