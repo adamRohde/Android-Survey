@@ -81,6 +81,8 @@ public class SurveyFragment extends Fragment implements View.OnClickListener{
         expandingAndCollapsingQuestions.setSurveyData(surveyData);
         expandingAndCollapsingQuestions.onClick(rootView);
         expandingAndCollapsingQuestions.onGroupExpand();
+
+        getResources();
     }
 
     @Override
