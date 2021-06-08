@@ -31,7 +31,7 @@ public class SurveyActivity extends AppCompatActivity {
             transaction.commit();
         }
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
+       Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.my_values);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

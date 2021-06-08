@@ -102,10 +102,10 @@ public class SurveyFragment extends Fragment implements View.OnClickListener{
 
         nextButton = (Button)rootView.findViewById(R.id.nextButton);
 
-        SurveyDataProgressBar surveyDataProgressBar;
-        surveyDataProgressBar = (SurveyDataProgressBar)(ProgressBar)rootView.findViewById(R.id.progressBar1);
-        surveyDataProgressBar.setMax(100);
-        expandingAndCollapsingQuestions.setListener(surveyDataProgressBar);
+       // SurveyDataProgressBar surveyDataProgressBar;
+       // surveyDataProgressBar = (SurveyDataProgressBar)(ProgressBar)rootView.findViewById(R.id.progressBar1);
+      //  surveyDataProgressBar.setMax(100);
+       // expandingAndCollapsingQuestions.setListener(surveyDataProgressBar);
 
         tvSurveyStatement = rootView.findViewById(R.id.surveyStatementTextView);
         tvSurveyStatement.setAllCaps(true);

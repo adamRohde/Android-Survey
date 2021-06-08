@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".Activities.MainActivity"></activity>
+        <activity android:name=".Activities.MainActivity"/>
 
         <activity android:name=".Activities.SurveyActivity" android:parentActivityName=".Activities.MainActivity" />
 
@@ -21,14 +21,13 @@
         <activity android:name=".Activities.TutorialActivity" />
 
         <activity android:name=".Activities.SplashActivity">
-            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".Activities.DescriptionsActivity"></activity>
+        <activity android:name=".Activities.DescriptionsActivity"/>
 
         <meta-data
             android:name="preloaded_fonts"

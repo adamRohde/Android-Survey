@@ -21,16 +21,16 @@
 <!--            android:layout_marginTop="-4dp"-->
 <!--            android:progress="0"/>-->
 
-        <careerchangeover.com.valuesvisualizer.Survey.SurveyDataProgressBar
-            android:id="@+id/progressBar1"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="match_parent"
-            android:layout_height="8sp"
-            android:progressDrawable="@drawable/progress_bar"
-            android:layout_marginBottom="-8dp"
-            android:layout_marginTop="-4dp"
-            android:progress="0"
-            />
+<!--        <careerchangeover.com.valuesvisualizer.Survey.SurveyDataProgressBar-->
+<!--            android:id="@+id/progressBar1"-->
+<!--            style="?android:attr/progressBarStyleHorizontal"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="8sp"-->
+<!--            android:progressDrawable="@drawable/progress_bar"-->
+<!--            android:layout_marginBottom="-8dp"-->
+<!--            android:layout_marginTop="-4dp"-->
+<!--            android:progress="0"-->
+<!--            />-->
 
         <TextView
             android:id="@+id/surveyStatementTextView"
@@ -43,9 +43,9 @@
             android:paddingTop="24sp"
             android:paddingBottom="24sp"
             android:text="@string/personal_survey_statement"
-            android:textColor="@color/dark_gray"
-            android:textSize="18sp"
-            android:fontFamily="@font/open_sans"/>
+            android:textColor="#0c929a"
+            android:textSize="22sp"
+            android:fontFamily="@font/montserrat"/>
 
     </LinearLayout>
 

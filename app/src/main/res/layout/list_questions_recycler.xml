@@ -14,7 +14,7 @@
 
         <ImageView
             android:id="@+id/list_item_question_icon"
-            android:layout_width="40dp"
+            android:layout_width="55dp"
             android:layout_height="40dp"
             android:layout_gravity="center"
             android:background="@drawable/ic_border_dark"
@@ -28,8 +28,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginStart="25sp"
-            android:layout_marginLeft="25sp"
+            android:layout_marginStart="15sp"
+            android:layout_marginLeft="15sp"
             android:layout_marginEnd="25sp"
             android:layout_marginRight="25sp"
             android:background="@color/background_color"
@@ -43,11 +43,9 @@
             android:id="@+id/list_item_genre_arrow"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:layout_gravity="center_vertical"
+            android:layout_gravity="top"
             android:layout_marginRight="@dimen/imageview_arrow_marginRight"
             android:layout_marginEnd="@dimen/imageview_arrow_marginRight"/>
-
-
 
     </LinearLayout>
 
